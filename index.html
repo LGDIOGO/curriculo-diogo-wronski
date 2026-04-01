@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diogo Wronski - CR</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #0D0D0D;
+            --bg-card: rgba(20, 20, 20, 0.8);
+            --accent: #92FF66; /* Neon Emerald */
+            --text-primary: #FFFFFF;
+            --text-secondary: #A1A1AA;
+            --whatsapp: #25D366;
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --neon-glow: 0 0 20px rgba(146, 255, 102, 0.3);
+            --font-main: 'Inter', sans-serif;
+            --font-heading: 'Montserrat', sans-serif;
+            --radius: 24px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-primary);
+            font-family: var(--font-main);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            padding: 60px 20px;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(146, 255, 102, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 90% 80%, rgba(146, 255, 102, 0.03) 0%, transparent 50%);
+        }
+
+        .cv-wrapper {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 40px;
+        }
+
+        /* --- Header / Profile --- */
+        .header-section {
+            grid-column: span 2;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 40px;
+            padding: 40px;
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius);
+            backdrop-filter: blur(20px);
+        }
+
+        .profile-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 4px solid var(--accent);
+            box-shadow: var(--neon-glow);
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .header-info h1 {
+            font-family: var(--font-heading);
+            font-size: 56px;
+            font-weight: 900;
+            letter-spacing: -2px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .whatsapp-btn {
+            background: rgba(37, 211, 102, 0.1);
+            border: 1px solid rgba(37, 211, 102, 0.3);
+            color: var(--whatsapp);
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-size: 14px;
+            text-decoration: none;
+            font-family: var(--font-main);
+            font-weight: 500;
+            letter-spacing: 0;
+            text-transform: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-btn:hover {
+            background: var(--whatsapp);
+            color: #000;
+            box-shadow: 0 0 15px rgba(37, 211, 102, 0.4);
+        }
+
+        .whatsapp-btn svg { width: 16px; fill: currentColor; }
+
+        .header-info .tagline {
+            font-size: 20px;
+            color: var(--accent);
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* --- Sidebar --- */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .sidebar-card {
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius);
+            padding: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .section-label {
+            font-family: var(--font-heading);
+            font-size: 13px;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .contact-group {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .contact-link {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: color 0.3s;
+        }
+
+        .contact-link:hover { color: var(--accent); }
+
+        .contact-link svg { width: 18px; color: var(--accent); }
+
+        .skill-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .skill-item-new {
+            font-size: 14px;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-item-new::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+            box-shadow: var(--neon-glow);
+            flex-shrink: 0;
+        }
+
+        /* --- Main Content --- */
+        .content-main {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .kpi-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .kpi-card {
+            background: rgba(146, 255, 102, 0.03);
+            border: 1px solid rgba(146, 255, 102, 0.1);
+            padding: 24px;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .kpi-val {
+            font-family: var(--font-heading);
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--accent);
+            display: block;
+            white-space: nowrap;
+        }
+
+        .kpi-desc {
+            font-size: 10px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 1.4;
+            display: block;
+            margin-top: 8px;
+        }
+
+        .experience-card {
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius);
+            padding: 40px;
+        }
+
+        .exp-block {
+            margin-bottom: 40px;
+            position: relative;
+            padding-left: 30px;
+            border-left: 2px solid rgba(146, 255, 102, 0.2);
+        }
+
+        .exp-block:last-child { margin-bottom: 0; }
+
+        .exp-block::before {
+            content: '';
+            position: absolute;
+            left: -7px;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            background: var(--accent);
+            border-radius: 50%;
+            box-shadow: var(--neon-glow);
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 12px;
+        }
+
+        .exp-title { font-family: var(--font-heading); font-size: 20px; font-weight: 700; }
+        .exp-company { color: var(--accent); font-weight: 600; font-size: 16px; display: block; }
+        .exp-date { color: var(--text-secondary); font-size: 13px; font-weight: 400; }
+
+        .exp-details {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-top: 12px;
+        }
+
+        .cta-portfolio {
+            display: block;
+            background: var(--accent);
+            color: #000;
+            text-align: center;
+            text-decoration: none;
+            padding: 20px;
+            border-radius: 16px;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 18px;
+            margin-top: 40px;
+            transition: all 0.3s ease;
+        }
+
+        .cta-portfolio:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--neon-glow);
+        }
+
+        /* --- Psychology Highlight --- */
+        .psych-box {
+            background: linear-gradient(135deg, rgba(146, 255, 102, 0.1) 0%, transparent 100%);
+            border: 1px solid rgba(146, 255, 102, 0.2);
+            padding: 30px;
+            border-radius: var(--radius);
+            margin-top: 24px;
+        }
+
+        /* --- Footer --- */
+        footer {
+            grid-column: span 2;
+            text-align: center;
+            margin-top: 60px;
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        /* --- Print Styles --- */
+        @media print {
+            body { 
+                background: #fff !important; 
+                color: #000 !important; 
+                padding: 0; 
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            .cv-wrapper { display: block; max-width: 100%; }
+            .header-section, .sidebar-card, .experience-card, .psych-box { 
+                background: #fff !important; 
+                border: 1px solid #eee !important; 
+                backdrop-filter: none !important; 
+                color: #000 !important;
+                margin-bottom: 20px;
+            }
+            .header-info h1, .exp-title, .kpi-val { color: #000 !important; }
+            .text-secondary, .exp-details { color: #333 !important; }
+            .accent, .section-label, .exp-company, .kpi-val, .tagline { color: #000 !important; font-weight: 900; }
+            .skill-bar { border: 1px solid #000; }
+            .no-print { display: none !important; }
+            @page { margin: 1cm; }
+        }
+
+        /* Mobile */
+        @media (max-width: 850px) {
+            .cv-wrapper { grid-template-columns: 1fr; }
+            .header-section { flex-direction: column; text-align: center; padding: 30px; }
+            .kpi-container { grid-template-columns: 1fr; }
+            .header-info h1 { font-size: 42px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cv-wrapper">
+        <!-- Header -->
+        <header class="header-section">
+            <img src="profile.png" alt="Diogo Wronski" class="profile-photo" onerror="this.src='https://ui-avatars.com/api/?name=Diogo+Wronski&background=0D0D0D&color=92FF66&size=512'">
+            <div class="header-info">
+                <h1>
+                    Diogo Wronski 
+                    <a href="https://wa.me/5547997700400" class="whatsapp-btn no-print" target="_blank">
+                        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.94 3.659 1.437 5.634 1.437h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        Conversar agora
+                    </a>
+                </h1>
+                <p class="tagline">Analista de E-commerce & Editor de Vídeos</p>
+            </div>
+        </header>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <!-- Versão Digital (QR Code) -->
+            <div class="sidebar-card no-print">
+                <h3 class="section-label">Versão Digital</h3>
+                <div style="text-align: center; padding: 10px 0;">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=https://lgdiogo.github.io/curriculo-diogo-wronski/&color=92FF66&bgcolor=0F0F0F" 
+                         alt="QR Code Currículo" 
+                         style="border: 1px solid var(--accent); border-radius: 8px; padding: 8px; width: 140px; height: 140px;">
+                    <p style="font-size: 11px; color: var(--text-secondary); margin-top: 12px; line-height: 1.4;">
+                        Acesse métricas e portfólio<br>digital atualizados.
+                    </p>
+                </div>
+            </div>
+
+            <div class="sidebar-card">
+                <h3 class="section-label">Contato</h3>
+                <div class="contact-group">
+                    <a href="mailto:wronskilg300@gmail.com" class="contact-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        wronskilg300@gmail.com
+                    </a>
+                    <a href="tel:+5547997700400" class="contact-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                        +55 47 99770 0400
+                    </a>
+                    <a href="https://port.editordiogomov.workers.dev/" class="contact-link" target="_blank">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                        Portfólio de Edição de Vídeo
+                    </a>
+                    <div class="contact-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        Boa Vista, Joinville - SC
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-card">
+                <h3 class="section-label">Habilidades Técnicas</h3>
+                <ul class="skill-list">
+                    <li class="skill-item-new">Adobe Premiere Pro & CapCut Desktop</li>
+                    <li class="skill-item-new">After Effects (VFX & Retenção)</li>
+                    <li class="skill-item-new">Gestão de Marketplaces / E-commerce</li>
+                    <li class="skill-item-new">Tato com sistema ERP Upseller e Tiny</li>
+                    <li class="skill-item-new">Implementação de sistemas ERP</li>
+                    <li class="skill-item-new">Photoshop & Canva</li>
+                    <li class="skill-item-new">Excel Intermediário / Avançado</li>
+                    <li class="skill-item-new">Edição de vídeo de alta performance</li>
+                </ul>
+            </div>
+
+            <div class="sidebar-card">
+                <h3 class="section-label">Formação</h3>
+                <div style="margin-bottom: 20px;">
+                    <strong style="color:var(--text-primary); font-size:14px;">Católica SC (Joinville)</strong><br>
+                    <span style="color:var(--accent); font-size:12px;">Psicologia</span><br>
+                    <span style="color:var(--text-secondary); font-size:11px;">2025 – Atualmente</span>
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <strong style="color:var(--text-primary); font-size:14px;">UniSociesc</strong><br>
+                    <span style="color:var(--accent); font-size:12px;">Marketing Digital</span><br>
+                    <span style="color:var(--text-secondary); font-size:11px;">2023 – 2025</span>
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <strong style="color:var(--text-primary); font-size:14px;">Unisociesc</strong><br>
+                    <span style="color:var(--accent); font-size:12px;">Ensino Técnico em Eletrotécnica</span><br>
+                    <span style="color:var(--text-secondary); font-size:11px;">2017 – 2019</span>
+                </div>
+                <div>
+                    <strong style="color:var(--text-primary); font-size:14px;">Colégio Tupy</strong><br>
+                    <span style="color:var(--accent); font-size:12px;">Ensino Médio completo</span><br>
+                    <span style="color:var(--text-secondary); font-size:11px;">2017 – 2019</span>
+                </div>
+            </div>
+
+            <div class="sidebar-card">
+                <h3 class="section-label">Cursos e Especializações</h3>
+                <div style="margin-bottom: 16px;">
+                    <strong style="color:var(--text-primary); font-size:13px;">Wizard</strong><br>
+                    <span style="color:var(--text-secondary); font-size:12px;">Inglês avançado</span><br>
+                    <span style="color:var(--text-secondary); font-size:11px;">2018 – 2021</span>
+                </div>
+                <div style="margin-bottom: 16px;">
+                    <strong style="color:var(--text-primary); font-size:13px;">Afterflix</strong><br>
+                    <span style="color:var(--text-secondary); font-size:12px;">Especialização em After Effects</span>
+                </div>
+                <div style="margin-bottom: 16px;">
+                    <strong style="color:var(--text-primary); font-size:13px;">Ultimate Editors</strong><br>
+                    <span style="color:var(--text-secondary); font-size:12px;">Edição Dinâmica de Alta Retenção</span>
+                </div>
+                <div style="margin-bottom: 16px;">
+                    <strong style="color:var(--text-primary); font-size:13px;">Informações Adicionais</strong><br>
+                    <span style="color: #D1D1D6; font-size:12px;">Serviço Militar Obrigatório (1 ano)</span><br>
+                    <span style="color: #D1D1D6; font-size:12px;">Habilitação CNH Categoria B</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main -->
+        <main class="content-main">
+            <div class="experience-card">
+                <h3 class="section-label">Alguns resultados</h3>
+                <div class="kpi-container">
+                    <div class="kpi-card">
+                        <span class="kpi-val">+R$500k</span>
+                        <span class="kpi-desc">Faturamento/mês<br>(operação de marketplaces)</span>
+                    </div>
+                    <div class="kpi-card">
+                        <span class="kpi-val">+500k</span>
+                        <span class="kpi-desc">Views orgânicas</span>
+                    </div>
+                    <div class="kpi-card">
+                        <span class="kpi-val">+100</span>
+                        <span class="kpi-desc">vídeos editados ou produzidos</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="experience-card">
+                <h3 class="section-label">Experiência Profissional</h3>
+
+                <!-- 1. Dipack -->
+                <div class="exp-block">
+                    <div class="exp-header">
+                        <span class="exp-title">Analista de E-commerce</span>
+                        <span class="exp-date">04/25 a 11/25</span>
+                    </div>
+                    <span class="exp-company">Dipack – Joinville, SC</span>
+                    <p class="exp-details">
+                        Responsável pelo faturamento, implementação do sistema Tiny, e pela operação de marketplaces e e-commerce. Gerenciei Mercado Livre, Shopee e Amazon, criando anúncios e alavancando as vendas online da empresa, chegamos a uma média de <strong style="color:var(--accent)">100 a 200 mil mensais</strong> de faturamento.
+                    </p>
+                </div>
+
+                <!-- 2. Frequência Zero -->
+                <div class="exp-block">
+                    <div class="exp-header">
+                        <span class="exp-title">Analista de E-commerce e Marketing</span>
+                        <span class="exp-date">12/22 a 04/25</span>
+                    </div>
+                    <span class="exp-company">Frequência Zero – Joinville, SC</span>
+                    <p class="exp-details">
+                        Responsável pelo faturamento, implementação do sistema Tiny, e pela operação de marketplaces e e-commerce. Gerenciava postagens e campanhas de anúncios no Instagram, Tiktok e YouTube, otimizando a experiência do cliente e alavancando as vendas online da empresa, chegamos a uma média de <strong style="color:var(--accent)">400 a 500 mil mensais</strong> de faturamento e mais de <strong style="color:var(--accent)">meio milhão de visualizações</strong> no digital.
+                    </p>
+                </div>
+
+                <!-- 3. Freelance Edição de Vídeo -->
+                <div class="exp-block">
+                    <div class="exp-header">
+                        <span class="exp-title">Freelance Edição de Vídeo</span>
+                        <span class="exp-date">01/19 a 03/22</span>
+                    </div>
+                    <span class="exp-company">Theo Lima</span>
+                    <p class="exp-details">
+                        Responsável pela produção e edição de conteúdos audiovisuais para clientes internacionais voltados para eventos, casamentos, restaurantes, etc. Atuei na criação de vídeos dinâmicos para Instagram, foi uma experiência vital para criar o tato com o <strong style="color:var(--accent)">Premiere e After Effects</strong>.
+                    </p>
+                </div>
+
+                <!-- 4. Wise Automação -->
+                <div class="exp-block">
+                    <div class="exp-header">
+                        <span class="exp-title">Vendedor Técnico</span>
+                        <span class="exp-date">04/18 a 04/22</span>
+                    </div>
+                    <span class="exp-company">Wise Automação – Joinville, SC</span>
+                    <p class="exp-details">
+                        Atuei no faturamento de notas fiscais, prospecção ativa, e expansão da base de clientes. Realizei visitas técnicas, embalagens de produtos, e era responsável pela elaboração de orçamentos e operação de sistemas de CRM.
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="psych-box">
+                <h3 class="section-label">Retenção & Retorno</h3>
+                <p style="font-size: 15px; color: var(--text-secondary);">
+                    Como estudante de Psicologia, minha abordagem é orientada a dados e comportamento. Eu não apenas edito vídeos ou crio anúncios, eu projeto experiências reativas que exploram a economia da atenção.
+                </p>
+            </div>
+
+            <a href="https://port.editordiogomov.workers.dev/" class="cta-portfolio no-print" target="_blank">
+                Conheça meu trabalho de edição de vídeo
+            </a>
+        </main>
+    </div>
+
+    <footer>
+        &copy; 2026 Diogo Wronski. Apresentação
+    </footer>
+
+</body>
+</html>
